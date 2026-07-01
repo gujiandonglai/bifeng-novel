@@ -1,0 +1,62 @@
+/* ==========================================================================
+   responsive.css —— 响应式：电脑四列 / 平板两列 / 手机一列
+   ========================================================================== */
+
+/* 平板 */
+@media (max-width: 960px) {
+  .book-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .book-detail { grid-template-columns: 200px 1fr; gap: 28px; }
+  .site-header__nav { display: none; }
+  .nav-toggle { display: block; }
+}
+
+/* 手机 */
+@media (max-width: 620px) {
+  .book-grid { grid-template-columns: repeat(1, 1fr); }
+  .hero { padding: 40px 0 28px; }
+  .hero h1 { font-size: 26px; }
+  .hero__search { flex-direction: column; }
+  .book-detail { grid-template-columns: 1fr; }
+  .book-detail__cover { max-width: 200px; margin: 0 auto; }
+  .book-detail__title { text-align: center; }
+  .book-detail__author { text-align: center; }
+  .book-detail__tags { text-align: center; }
+  .book-detail__actions { justify-content: center; }
+  .container { padding: 0 16px; }
+  .reader-layout { grid-template-columns: 1fr !important; }
+  .reader-toc { display: none; }
+}
+
+/* 移动端下拉菜单展开态（由 ui.js 切换 .is-open） */
+@media (max-width: 960px) {
+  .site-header__nav.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 12px 24px 20px;
+    gap: 4px;
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+  }
+  .site-header__nav.is-open .nav-item { flex-direction: column; align-items: flex-start; width: 100%; }
+  .site-header__nav.is-open .nav-item > a { padding: 10px 0; width: 100%; }
+  .site-header__nav.is-open .nav-caret { display: none; }
+  .site-header__nav.is-open .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0 0 6px 14px;
+    min-width: 0;
+    width: 100%;
+  }
+  .site-header__nav.is-open .submenu a { padding: 6px 0; font-size: 13px; }
+}

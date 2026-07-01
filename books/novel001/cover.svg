@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A3412A"/>
+      <stop offset="100%" stop-color="#46331F"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="420" fill="url(#g1)"/>
+  <rect x="16" y="16" width="268" height="388" fill="none" stroke="#F7F2E7" stroke-width="1" opacity="0.5"/>
+  <text x="150" y="190" font-family="'STSong','SimSun',serif" font-size="42" fill="#F7F2E7" text-anchor="middle">名言之力</text>
+  <text x="150" y="230" font-family="'STSong','SimSun',serif" font-size="16" fill="#F7F2E7" text-anchor="middle" opacity="0.85">王东来 著</text>
+  <text x="150" y="380" font-family="sans-serif" font-size="12" fill="#F7F2E7" text-anchor="middle" opacity="0.6">BIFENG NOVEL</text>
+</svg>

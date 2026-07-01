@@ -1,0 +1,307 @@
+/* ==========================================================================
+   layout.css —— 页面结构布局：Header / Footer / Hero / 网格 / 详情页
+   ========================================================================== */
+
+/* ---------- 顶部导航（由 ui.js 注入到 #site-header） ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.site-header__logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-serif);
+}
+.site-header__logo strong {
+  font-size: 22px;
+  color: var(--color-heading);
+  letter-spacing: 2px;
+}
+.site-header__logo span {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: 1px;
+}
+.site-header__nav {
+  display: flex;
+  gap: 28px;
+}
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--color-text);
+  padding: 6px 2px;
+  position: relative;
+}
+.nav-item > a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+.nav-item > a:hover::after,
+.nav-item > a.is-active::after { transform: scaleX(1); }
+.nav-item > a.is-active { color: var(--color-accent); font-weight: 600; }
+.nav-caret { font-size: 9px; opacity: 0.55; transition: transform 0.2s ease; }
+.nav-item:hover .nav-caret { transform: rotate(180deg); }
+
+/* ---------- 二级下拉菜单 ---------- */
+.submenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-card-hover);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 148px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 150;
+}
+.nav-item:hover .submenu,
+.nav-item:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.submenu a {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.submenu a:hover { background: var(--color-accent-soft); color: var(--color-heading); }
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--color-heading);
+  cursor: pointer;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 56px 0 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.hero p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.hero__search {
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+}
+.hero__search input { flex: 1; }
+
+/* ---------- 网格 ---------- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ---------- 页面头（书库/排行榜/分类/搜索 通用） ---------- */
+.page-head {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+.page-head h1 { font-size: 28px; margin-bottom: 6px; }
+.page-head p { color: var(--color-text-muted); margin: 0; }
+
+/* ---------- 筛选栏 ---------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 28px;
+}
+.filter-bar__group { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  cursor: pointer;
+  color: var(--color-text);
+}
+.chip.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+/* ---------- 分页 ---------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 40px 0;
+}
+.pagination button {
+  min-width: 36px; height: 36px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  cursor: pointer;
+  color: var(--color-text);
+}
+.pagination button.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- 排行榜列表 ---------- */
+.rank-list { display: flex; flex-direction: column; gap: 2px; }
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 16px;
+  background: var(--color-card);
+  border-radius: var(--radius-s);
+}
+.rank-item__num {
+  width: 32px;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.rank-item:nth-child(1) .rank-item__num { color: var(--color-accent); }
+.rank-item:nth-child(2) .rank-item__num { color: #9AA9B8; }
+.rank-item:nth-child(3) .rank-item__num { color: #C68642; }
+.rank-item__cover { width: 44px; height: 60px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.rank-item__cover img { width: 100%; height: 100%; object-fit: cover; }
+.rank-item__info { flex: 1; min-width: 0; }
+.rank-item__title { font-weight: 600; color: var(--color-heading); }
+.rank-item__meta { font-size: 12px; color: var(--color-text-muted); }
+.rank-item__stat { font-size: 13px; color: var(--color-accent); font-weight: 600; }
+
+/* ---------- 友情链接 / Footer ---------- */
+.links-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 28px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 32px 0;
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.site-footer a { color: var(--color-text-muted); }
+.site-footer a:hover { color: var(--color-accent); }
+
+/* ---------- 详情页 book.html ---------- */
+.book-detail {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  padding: 40px 0;
+}
+.book-detail__cover {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.book-detail__title { font-size: 30px; margin-bottom: 8px; }
+.book-detail__author { color: var(--color-text-muted); margin-bottom: 14px; }
+.book-detail__tags { margin-bottom: 16px; }
+.book-detail__meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.book-detail__meta-list div span { display: block; color: var(--color-text-muted); font-size: 12px; }
+.book-detail__intro { margin-bottom: 24px; color: var(--color-text); }
+.book-detail__actions { display: flex; gap: 12px; }
+
+.toc-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+}
+.toc-list a {
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.toc-list a:hover { color: var(--color-accent); }
+
+/* ---------- 关于页 ---------- */
+.about-block { padding: 40px 0; max-width: 720px; margin: 0 auto; }
+.about-block h2 { margin-top: 40px; }

@@ -1,0 +1,36 @@
+/* ==========================================================================
+   animation.css —— 微交互动效：卡片悬停 / 封面动画 / 淡入
+   ========================================================================== */
+
+.book-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+.book-card__cover img {
+  transition: transform 0.4s ease;
+}
+.book-card:hover .book-card__cover img {
+  transform: scale(1.06);
+}
+
+.rank-item, .chip, .pagination button {
+  transition: all 0.2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease both; }
+
+.reader-settings {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* 尊重用户的“减少动态效果”系统设置 */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
