@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阅读中 - 笔锋 Bifeng Novel</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/reader.css">
+<link rel="stylesheet" href="css/animation.css">
+</head>
+<body data-page="library">
+
+<header id="site-header"></header>
+
+<main class="container" id="readerRoot">
+  <div class="loading-state">正文加载中…</div>
+</main>
+
+<div class="reader-toolbar" id="readerToolbarRoot"></div>
+
+<footer id="site-footer"></footer>
+
+<script src="js/ui.js"></script>
+<script src="js/markdown.js"></script>
+<script src="js/reader.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", initReaderPage);
+</script>
+</body>
+</html>

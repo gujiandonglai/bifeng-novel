@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>书库 - 笔锋 Bifeng Novel</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animation.css">
+</head>
+<body data-page="library">
+
+<header id="site-header"></header>
+
+<div class="page-head">
+  <div class="container">
+    <h1>书库</h1>
+    <p>浏览全部作品，按分类与排序方式查找你想读的故事。</p>
+  </div>
+</div>
+
+<main class="container">
+  <div class="filter-bar">
+    <div class="filter-bar__group" id="categoryFilter"></div>
+    <select id="sortSelect" style="margin-left:auto;">
+      <option value="update">按更新时间</option>
+      <option value="hot">按热度</option>
+      <option value="words">按字数</option>
+    </select>
+  </div>
+
+  <div class="book-grid" id="libraryGrid"></div>
+  <div class="pagination" id="libraryPagination"></div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", initLibraryPage);
+</script>
+</body>
+</html>
