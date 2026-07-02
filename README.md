@@ -74,6 +74,13 @@ python3 -m http.server 8000
 
 完成以上步骤后，首页、书库、排行榜、分类、搜索页会自动读取到新书，**不需要修改任何 HTML/CSS/JS**。
 
+## 批量发布：TXT → 网站（自动化工具）
+
+如果你手上是 `.txt` 格式的小说、且数量比较多，不用按上面的步骤一本本手动拆，
+直接用 `tools/txt_to_site.py`：把 txt 放进 `novels_txt/`，运行一条命令，
+自动识别卷名/章节、拆分 Markdown、生成 `book.json`、更新 `data/books.json`，
+细节和字段说明见 [`tools/README.md`](tools/README.md)。
+
 > 后续版本（见下方规划）会加入 GitHub Actions，实现扫描 `books/` 目录自动生成 `data/books.json`，届时第 5 步也可以省略。
 
 ## 分类清单
